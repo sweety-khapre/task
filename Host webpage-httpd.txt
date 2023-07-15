@@ -1,0 +1,20 @@
+Host webpage using httpd
+
+steps:
+
+1> Go to EC2 service
+
+2> lauch Instance > give name : My-server-httpd > select AMI  image > give Keypair 
+   Create Security Group > Allow HTTP
+
+3> Scroll Down in Advance Detail > Put User data
+   
+    #!/bin/bash
+	sudo yum update 
+	sudo yum install httpd -y
+	sudo systemctl start httpd
+	sudo systemctl enable httpd
+        echo "<h1> This is my Homepage "$HOSTNAME"</h1>" > /var/www/html/index.html
+
+4> Click Launch instance > after 2/2 check > copy public ip of instance
+   Hit on browser > You will see : This is my Homepage

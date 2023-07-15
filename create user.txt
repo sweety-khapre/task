@@ -1,0 +1,12 @@
+Create user & give password
+
+steps:
+1. Go to IAM Service
+2. On side panel > click Users > Add Users
+3> Specify User details> name : Sweety
+4> check Provide user access to the AWS Management Console
+5> select I want to create an IAM user
+6> Select custom Password > Enter Password > next
+7> Uncheck Users must create a new password at next sign-in > next
+8> You can set permissions > Next > Create User
+9>Download ,csv file for future console access for the said user

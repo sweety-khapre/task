@@ -1,0 +1,11 @@
+Create bucket, add 2 users, give one user permission of read and write, give                 
+other user permission oF read only.
+
+steps:
+1> first create two users: user1 and user2
+2> go to s3 service > create Bucket > give name : sweety-bucket
+3> go to Policy > specify Permission > select service s3 > Acess level Read and Write > Give bucket name and ARN > next
+ Policy name: Policy_read_write > create Policy
+4> Repeat the same process for read only permission > policy name : Policy_read_only
+5> Go to Users > select user1 > Add permission > Attach Policies directly > Search for Policy_read-write > add permission
+6> Go to user > select user2 > Add permission > Attach Policies directly > Search for Policy_read_only > add Permission

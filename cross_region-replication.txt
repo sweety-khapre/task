@@ -1,0 +1,34 @@
+Create S3 bucket and cross region replication
+
+steps:
+1> go to vergenia region > go to s3 service > Create Bucket > give name: vergenia-bucket > region: vergenia > Acl enabled 
+   > (uncheck) block all public access > bucket version (enabled) > create bucket
+   in vergenia region > permission > object owner > ACL > edit > Public access check Read and Write
+
+2> go to ohio region > go to s3 service > Create Bucket > give name: ohio-bucket > region : ohio > Acl enabled 
+   > (uncheck) block all public access > bucket version (enabled) > create bucket
+   in ohio region > permission > object owner > ACL > edit > Public access check List and Read
+
+
+3> go to bucket replication-vergenia 
+   Management > Replicate Rules > create new > name : Replication-rule-1
+   source bucket : Select apply to all object in this bucket 
+    Destination : select choose bucket from this account
+   browse s3 > region --- Bucket-ohio > chose path
+
+4> In Iam role > select from existing Iam roles > create new role
+
+5> encryption : Replicate (uncheck)
+   Destination storage class : uncheck default > save
+ 
+6> choose (Yes) Replicate existing object > Submit
+   In job setting : select Automatically run the job when its ready
+  In complete report destination > select vergenia region > choose path
+  permissions > select choose from existing Iam roles > save
+  Vergenia bucket > Permission > ACL edit > select List and Read > save
+
+7> Go to vergenia-bucket > Upload > Addfiles > catty.txt
+    Permission : select Grant Public Access
+
+8> Go to ohio-bucket > catty.tt will be present in object > The object is replicated
+

@@ -1,0 +1,28 @@
+Host a static webpage of S3 bucket and enable server access logs.:
+
+steps:
+1> Go to s3 service > Create bucket > name : bucket-for-hosting
+   Acl enabled > (Uncheck) Block Public access > Create bucket
+
+2> Go to browser > search : CSS Free templates > Download > save > extract zip file
+
+3> Go to bucket > Upload files manually one by one > Upload
+  Properties > Static website hosting (down)  > edit > select enabled > select Host a static website
+  Index document : index.html
+  Go tp permission > Object overview > allow all access permission
+ Got to ACL edit > public access: Allow Read and List > save changes
+
+4>select bucket > Actions > MAke public access
+
+5> Copy the static website hosting link > Paste on browser > your webpage can be seen
+
+To create server Access Logs:
+
+a) make another bucket > name : Log-bucket
+
+b) Go to bucket-for-hosting > Property > Server Access Logging > edit > enabled
+ 
+c) In Target bucket > Browse > Select Log-bucket > choose path > save
+
+ Wait for new minutes and in Log-bucket you will start seeing logs being generated for the uploaded files you have done.
+ If you visit websites again logs will be generated > could be seen in Log-bucket

@@ -1,0 +1,26 @@
+Create S3 bucket and apply cross account replication:
+
+steps:
+1> Go to s3 > Create Bucket > give name : Sweety-bucket > specify region : Vergenia
+
+2> enable ACL > (uncheck) Block All Public Access > Enable Bucket versioning > Create bucket
+
+3> Go to that bucket > Management > create Replication rules > Create New > give name : Cross-acc-rule
+
+4> Status : (Select) enable > Bucket Source : Select apply to all objects in this bucket
+   Destination : (Select) specify a bucket in another account
+   Account id : Give 12 digit acc id no of the account you want to replicate objects in (account 2)
+   Bucket name : Specify the other Accounts bucket name where object will be replicated
+
+5> Iam role >chose from existing Iam roles >create new role > go with default setting > save
+
+6> Replicate existing object: (select) yes
+ job setting : (select) Auto run this job
+ Completion job : (Select) all task > select bucket name > Browse s3 > choose path
+ Permission > (select) choose from existing Iam role > save
+
+7> In account 2 > go to bucket > object ownership > ACL edit > Public Access: check Read and List
+
+8> Now go to sweety-bucket > Upload object > save 
+   go to Management >replication rules > destination > click link > content can be seen as replicated
+   copy url > paste on browser > object of account 2 can be seen being replicated

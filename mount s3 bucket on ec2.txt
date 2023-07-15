@@ -1,0 +1,36 @@
+Mount s3 bucket on EC2
+
+step 1: go to s3 > create bucket > give name : sweety-bucket > go with default settings > Create
+
+step 2:create an instance > create .pem files> AMI > Amazon linux 2 ami(HVM)-kernel
+
+step3: login mobaxtern using public ip of instance and .pem file
+
+step4:	sudo yum update
+      	sudo su
+	yum update -y
+	sudo amazon-linux-extras install epel -y
+	sudo yum install s3fs-fuse -y
+	echo "Access_key":"Secret_access_key" > ${HOME}/.passwd
+	ls -la /root/
+	chmod 600 ${HOME}/.passwd
+	ls -la /root/
+	mkdir /mounting-dir
+	ls
+	s3fs sweety-bucket /mounting-dir -o passwd_file=${HOME}/.passwd
+	mount | grep mounting-dir
+	cd /mounting-dir
+
+step5:	create a file =>fileA
+	ls
+	fileA =>Present in cli
+
+step6: go to console > Bucket > object > refresh => fileA ==>Present in aws console also
+
+step7: Bucket > Addfiles > notefile.txt > upload  
+
+step 8: goto Mobaxtern
+	ls
+	notefile.txt ===> Present in cli also
+
+Hence Mounting is Successful

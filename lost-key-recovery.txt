@@ -1,0 +1,30 @@
+steps:
+1> launch an instance > name: lost_key_server > create key pairs > save .pem file > Allow SSH 
+
+2>if lost_key_server's keypair is deleted
+
+3>launch another instance > name: recovery_server > create key pairs > save .pem files > Allow SSH
+
+4>stop lost_key_server > storage > select volume ID > actions > detach
+  again, select volume ID > action > attach volume > (volume of recovery_server)
+   device name : /dev/sdf   leave it like that
+ 
+5>using ip address of recovery_server > take ssh in Mobaxterm
+
+6> sudo su
+mkdir -p /var/recovery_disk
+lsblk
+mount -o nouuid /dev/xvdf1 /var/recovery_disk
+df -h
+cat /home/ec2-user/.ssh/authorized_keys >> /var/recovery_disk/home/ec2-user/.ssh/authorized_keys
+umount /var/recovery_disk
+
+7>go to console > lost_key_server > detach volume
+ again attach volume > (lost_key_server)(stopped)
+
+device name /dev/sda1 change it to /dev/xvda
+
+8>Instance > action > lost_key_server > start
+  copy public ip > mobaxterm > ssh > give .pem file of recovery-server > login >successfull
+   
+

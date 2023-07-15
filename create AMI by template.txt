@@ -1,0 +1,17 @@
+To create AMI by template :
+
+steps:
+
+1> go to EC2 service > Go to Launch Template > select OS image > give keypair > select security group
+   Launch Template
+
+2> select template name > action > launch instance form template > select OS image > give key pair  
+    launch instance
+
+3> select the instance > action > image and templates > create image
+
+4> image name: new-AMI  > create image
+
+5> Go to  AMI > new-AMI will be created
+
+
